@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_alertdialog"
+    android:paddingTop="@dimen/padding_20dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#030303"
+        android:textSize="@dimen/font_18sp"
+        android:visibility="gone"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:paddingLeft="@dimen/padding_10dp"
+        android:paddingRight="@dimen/padding_10dp"
+        android:layout_marginBottom="@dimen/padding_12dp"
+        tools:text="标题" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_16dp"
+        android:paddingLeft="@dimen/padding_10dp"
+        android:paddingRight="@dimen/padding_10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/padding_2dp"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/font_15sp"
+            android:visibility="gone"
+            tools:text="内容" />
+    </LinearLayout>
+
+
+    <View style="@style/appointment_split_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/NO"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/padding_44dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_alertdialog_negativebtn_bg"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/font_17sp"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_E4E4E4"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/YES"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/padding_44dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_alertdialog_positivebtn_bg"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/gray_333333"
+            android:textSize="@dimen/font_17sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,1 +1,1 @@
-include ':app', ':fflibrary'
+include ':app', ':fflibrary', ':ffmiddlelib'

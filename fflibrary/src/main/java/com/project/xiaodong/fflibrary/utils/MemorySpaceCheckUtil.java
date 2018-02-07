@@ -9,6 +9,7 @@ import android.os.StatFs;
 import com.project.xiaodong.fflibrary.ApplicationHelper;
 
 import java.io.File;
+import java.lang.reflect.Method;
 
 /**
  * Created by xiaodong.jin on 2018/2/6.
@@ -132,7 +133,7 @@ public class MemorySpaceCheckUtil {
         if (ApplicationHelper.getApplication() == null) {
             return "";
         }
-          ActivityManager am = (ActivityManager) ApplicationHelper.getApplication()
+        ActivityManager am = (ActivityManager) ApplicationHelper.getApplication()
                 .getBaseContext().getSystemService(Context.ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
         am.getMemoryInfo(mi);
@@ -140,5 +141,36 @@ public class MemorySpaceCheckUtil {
         return (mi.availMem / 1024 / 1024) + "";
     }
 
+    public static String getTotalMemory() {
+        Method _readProclines = null;
 
+        try {
+            Class<?> procClass = Class.forName("android.os.Process");
+            Class<?> parameterTypes[] = {String.class, String[].class, long[].class};
+
+            _readProclines = procClass.getMethod("readProcLines", parameterTypes);
+            Object arglist[] = new Object[3];
+
+            final String[] mMemInfoFields = new String[]{
+                    "MemTotal:", "MemFree:", "Buffers:", "Cached:"};
+            long[] mMemInfoSizes = new long[mMemInfoFields.length];
+
+            mMemInfoSizes[0] = 30;
+            mMemInfoSizes[1] = -30;
+
+            arglist[0] = new String("/proc/meminfo");
+            arglist[1] = mMemInfoFields;
+            arglist[2] = mMemInfoSizes;
+
+            if (_readProclines != null) {
+                _readProclines.invoke(null, arglist);
+
+                return "" + mMemInfoSizes[0] / 1024;
+            }
+            return "-1";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "-1";
+        }
+    }
 }
