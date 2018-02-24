@@ -18,6 +18,7 @@ android {
     }
 
     packagingOptions {
+        //解决包重复依赖冲突
         exclude 'META-INF/ASL2.0'
     }
 }
@@ -31,4 +32,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':ffmiddlelib')
     implementation project(':fflibrary')
+    implementation project(':imagepicker')
 }

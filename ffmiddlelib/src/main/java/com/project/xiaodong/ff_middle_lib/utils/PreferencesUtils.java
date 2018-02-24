@@ -66,8 +66,6 @@ public class PreferencesUtils {
     public static String OPEN_INSTALL_UPLOAD="OPEN_INSTALL_UPLOAD";
     /**记录openinstall渠道设备信息是否上传成功*/
     public static String OPEN_UPLOAD_DEVICE_INFO="OPEN_UPLOAD_DEVICE_INFO";
-    /**设计师预约记录*/
-    public static final String DESIGNER_BOOKING_BEAN= "DESIGNER_BOOKING_BEAN";;
     /***渠道对应的商场信息**/
     public static final String CHANNEL_MAPPING_MALL="channel_mapping_mall";
     /**app更新提示时间记录*/

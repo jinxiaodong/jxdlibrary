@@ -12,6 +12,9 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.project.xiaodong.ff_middle_lib.block.AlbumBlock;
+import com.project.xiaodong.ff_middle_lib.utils.CameraCanUseUtils;
+import com.project.xiaodong.ff_middle_lib.utils.PermissionSettingUtils;
+import com.project.xiaodong.ff_middle_lib.utils.ToastUtil;
 import com.project.xiaodong.ff_middle_lib.views.dialog.AlertDialogUtil;
 import com.project.xiaodong.fflibrary.base.BaseActivity;
 import com.project.xiaodong.jxdlibrary.R;
@@ -48,7 +51,11 @@ public class ThakePhotoDemo extends BaseActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                 == PackageManager.PERMISSION_GRANTED) {
             //有权限：打开相机
-            AlbumBlock.doActionImageCapture(this);
+            if (CameraCanUseUtils.isCameraCanUse()) {
+                AlbumBlock.doActionImageCapture(this);
+            } else {
+                showRequstPermissionDialog();
+            }
         } else {
             //无权限:申请权限
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
@@ -112,12 +119,18 @@ public class ThakePhotoDemo extends BaseActivity {
                             * 当然在这里我们可以针对不同的手机品牌，跳转到不同设置界面。
                             * 后面会给出相应的工具类。
                             */
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivityForResult(intent, REQUEST_CODE_SETTINGS);
-                        } catch (Exception e) {
+                            Intent permissionSettingIntent = PermissionSettingUtils.getPermissionSettingIntent(ThakePhotoDemo.this);
+                            startActivity(permissionSettingIntent);
 
+                        } catch (Exception e) {
+                            try {
+                                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                                intent.setData(uri);
+                                startActivityForResult(intent, REQUEST_CODE_SETTINGS);
+                            } catch (Exception e1) {
+                                ToastUtil.makeToast(ThakePhotoDemo.this, "打开设置失败");
+                            }
                         }
                     }
                 }).show();
