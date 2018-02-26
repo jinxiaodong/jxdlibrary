@@ -114,6 +114,7 @@ public class ThakePhotoDemo extends BaseActivity {
                     //去处理资源吧
                 }
                 break;
+
             case AlbumBlock.REQUEST_CODE_ACTION_IMAGE_CAPTURE:
 //                if (TextUtils.isEmpty(AlbumBlock.getPhotoPath(this)))
 //                return;
