@@ -1,10 +1,11 @@
-package com.project.xiaodong.jxdlibrary;
+package com.project.jxdlibrary;
 
 import android.content.Intent;
 import android.view.View;
 
+import com.project.jxdlibrary.demo.ThakePhotoDemo;
 import com.project.xiaodong.fflibrary.base.BaseActivity;
-import com.project.xiaodong.jxdlibrary.demo.ThakePhotoDemo;
+import com.project.xiaodong.jxdlibrary.R;
 
 public class MainActivity extends BaseActivity {
 

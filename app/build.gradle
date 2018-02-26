@@ -33,4 +33,12 @@ dependencies {
     implementation project(':ffmiddlelib')
     implementation project(':fflibrary')
     implementation project(':imagepicker')
+
+    //imagepicker库所用到的
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'org.xutils:xutils:3.3.36'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //imagepicker
+
 }

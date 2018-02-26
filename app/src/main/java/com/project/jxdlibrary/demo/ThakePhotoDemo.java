@@ -1,4 +1,4 @@
-package com.project.xiaodong.jxdlibrary.demo;
+package com.project.jxdlibrary.demo;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -11,18 +11,28 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
+import com.lzy.imagepicker.ImagePicker;
+import com.lzy.imagepicker.bean.ImageItem;
+import com.lzy.imagepicker.ui.ImageGridActivity;
 import com.project.xiaodong.ff_middle_lib.block.AlbumBlock;
+import com.project.xiaodong.ff_middle_lib.constants.GlobalConstants;
 import com.project.xiaodong.ff_middle_lib.utils.CameraCanUseUtils;
 import com.project.xiaodong.ff_middle_lib.utils.PermissionSettingUtils;
 import com.project.xiaodong.ff_middle_lib.utils.ToastUtil;
 import com.project.xiaodong.ff_middle_lib.views.dialog.AlertDialogUtil;
 import com.project.xiaodong.fflibrary.base.BaseActivity;
+import com.project.xiaodong.fflibrary.utils.FileUtils;
 import com.project.xiaodong.jxdlibrary.R;
+
+import java.util.ArrayList;
 
 public class ThakePhotoDemo extends BaseActivity {
 
     public static final int REQUEST_CAMERA = 101;
     private static final int REQUEST_CODE_SETTINGS = 102;
+    private static final int REQUEST_STORAGE = 103;
+    private static final int REQUEST_ALBUM = 104;
+    ArrayList<ImageItem> images = null;
 
     @Override
     protected int getHeaderLayoutId() {
@@ -35,10 +45,20 @@ public class ThakePhotoDemo extends BaseActivity {
     }
 
     public void onTakePhotos(View view) {
-        requestPermission();
+        requestPermission(1);
     }
 
     public void onOpenAlbum(View view) {
+//        requestPermission(2);
+        /*
+        *使用imagePick库仿微信的相册，及图片选择控件
+        */
+
+        ImagePicker.getInstance().setImageLoader(new GlideImageLoader());
+        Intent intent = new Intent(this, ImageGridActivity.class);
+        intent.putExtra(ImageGridActivity.EXTRAS_IMAGES, images);
+        startActivityForResult(intent, 100);
+
     }
 
     /*
@@ -47,8 +67,26 @@ public class ThakePhotoDemo extends BaseActivity {
      *    (2)若权限不存在，请求改权限
      *  3.重写onRequestPermissionsResult()方法，判断是权限返回结果，在做处理
      */
-    private void requestPermission() {
+    private void requestPermission(int index) {
+        if (index == 1) {
+            goCamera();
+        } else if (index == 2) {
+            goAlbum();
+        }
+    }
+
+    private void goAlbum() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            AlbumBlock.doActionPick(this);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_STORAGE);
+        }
+    }
+
+    private void goCamera() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {
             //有权限：打开相机
             if (CameraCanUseUtils.isCameraCanUse()) {
@@ -58,17 +96,38 @@ public class ThakePhotoDemo extends BaseActivity {
             }
         } else {
             //无权限:申请权限
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CAMERA);
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         switch (requestCode) {
             case REQUEST_CODE_SETTINGS:
 //                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
                 break;
+            case REQUEST_ALBUM:
+                if (data != null && requestCode == REQUEST_ALBUM) {
+                    images = (ArrayList<ImageItem>) data.getSerializableExtra(ImagePicker.EXTRA_RESULT_ITEMS);
+                    //去处理资源吧
+                }
+                break;
+            case AlbumBlock.REQUEST_CODE_ACTION_IMAGE_CAPTURE:
+//                if (TextUtils.isEmpty(AlbumBlock.getPhotoPath(this)))
+//                return;
+//                File file = new File(AlbumBlock.getPhotoPath(this));
+//                Uri imgUri = AlbumBlock.getImageContentUri(this, file);
+//                if (imgUri != null) {
+//                    AlbumBlock.doActionCrop(this, imgUri);
+//                } else {
+//                    ToastUtil.makeToast(this, "无法获取图片");
+//                }
+                ImagePicker.galleryAddPic(this, FileUtils.getDirectory(GlobalConstants.CACHE_IMG));
+                break;
+
+
         }
     }
 
@@ -97,6 +156,15 @@ public class ThakePhotoDemo extends BaseActivity {
                                 showRequstPermissionDialog();
                             }
                         }
+                    }
+                }
+                break;
+            case REQUEST_STORAGE:
+                for (int i = 0; i < permissions.length; i++) {
+                    String perm = permissions[i];
+                    if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                        //打开相册
+                        AlbumBlock.doActionPick(this);
                     }
                 }
                 break;
