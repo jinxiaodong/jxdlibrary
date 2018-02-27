@@ -116,6 +116,7 @@ public class ThakePhotoDemo extends BaseActivity {
                 break;
 
             case AlbumBlock.REQUEST_CODE_ACTION_IMAGE_CAPTURE:
+                //到裁剪
 //                if (TextUtils.isEmpty(AlbumBlock.getPhotoPath(this)))
 //                return;
 //                File file = new File(AlbumBlock.getPhotoPath(this));

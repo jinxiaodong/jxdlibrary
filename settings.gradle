@@ -1,1 +1,1 @@
-include ':app', ':fflibrary', ':ffmiddlelib', ':imagepicker'
+include ':app', ':ffbaselibrary', ':ffmiddlelib', ':imagepicker'

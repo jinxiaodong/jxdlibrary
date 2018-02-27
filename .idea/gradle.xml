@@ -9,7 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/fflibrary" />
+            <option value="$PROJECT_DIR$/ffbaselibrary" />
             <option value="$PROJECT_DIR$/ffmiddlelib" />
             <option value="$PROJECT_DIR$/imagepicker" />
           </set>
