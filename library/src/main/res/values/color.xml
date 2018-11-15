@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lib_white">#ffffff</color>
+    <color name="lib_main_color">#303030</color>//页面主色
+    <color name="lib_color_gray_f9f9f9">#f9f9f9</color>
+    <color name="lib_color_gray_444444">#444444</color>
+    <color name="lib_color_gray_333333">#333333</color>
+    <color name="lib_color_gray_666666">#666666</color>
+    <color name="lib_color_gray_393a3f">#393a3f</color>
+    <color name="lib_color_transparent">#00000000</color>
+    <color name="lib_color_gray_999999">#999999</color>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--dp-->
+    <dimen name="dimen_45dp">45dp</dimen>
+    <dimen name="dimen_44dp">44dp</dimen>
+    <dimen name="dimen_26dp">26dp</dimen>
+    <dimen name="dimen_24dp">24dp</dimen>
+    <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_15dp">15dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>//正文、表单内的说明文字
+    <dimen name="dimen_8dp">8dp</dimen>
+
+    <dimen name="dimen_6dp">6dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
+    <dimen name="dimen_3dp">3dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_1dp">1dp</dimen>
+
+    <!--sp-->
+    <dimen name="font_18sp">18sp</dimen>//页面标栏
+    <dimen name="font_16sp">16sp</dimen>//标题
+    <dimen name="font_15sp">15sp</dimen>
+
+
+</resources>

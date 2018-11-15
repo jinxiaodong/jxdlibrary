@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion app.compileSdkVersion
+    buildToolsVersion app.buildToolsVersion
+    defaultConfig {
+        multiDexEnabled true
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode app.versionCode
+        versionName app.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility app.sourceCompatibility
+        targetCompatibility app.targetCompatibility
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api supportDependencies.cardview
+    api supportDependencies.supportv4
+    api supportDependencies.appCompat
+    api supportDependencies.recyclerview
+    api supportDependencies.design
+    api supportDependencies.constraint
+    api supportDependencies.annotations
+    api supportDependencies.multidex
+
+    api thirdDependencies.okhttp
+    api thirdDependencies.gson
+    api thirdDependencies.rxjava
+    api thirdDependencies.rxandroid
+    api thirdDependencies.retrofit
+    api thirdDependencies.gsonConverter
+    api thirdDependencies.rxjavaAdapter
+    api thirdDependencies.eventbus
+
+}

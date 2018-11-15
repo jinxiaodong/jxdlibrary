@@ -3,10 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ffbaselibrary/fflibrary.iml" filepath="$PROJECT_DIR$/ffbaselibrary/fflibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ffbaselibrary/ffbaselibrary.iml" filepath="$PROJECT_DIR$/ffbaselibrary/ffbaselibrary.iml" />
+      <module fileurl="file://D:\WorkSpace\jxdlibrary\ffbaselibrary\fflibrary.iml" filepath="D:\WorkSpace\jxdlibrary\ffbaselibrary\fflibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ffmiddlelib/ffmiddlelib.iml" filepath="$PROJECT_DIR$/ffmiddlelib/ffmiddlelib.iml" />
       <module fileurl="file://$PROJECT_DIR$/imagepicker/imagepicker.iml" filepath="$PROJECT_DIR$/imagepicker/imagepicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/jxdlibrary.iml" filepath="$PROJECT_DIR$/jxdlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
     </modules>
   </component>
 </project>

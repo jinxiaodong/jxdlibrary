@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_view"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_vertical"
+    android:padding="20dp"
+    android:background="@drawable/lib_loaddialog_bg">
+
+    <ProgressBar
+        android:id="@+id/img"
+        style="@android:style/Widget.Holo.Light.ProgressBar.Small"
+        android:layout_width="40dp"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:id="@+id/tipTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/lib_color_gray_666666"
+        android:textSize="14sp"
+        android:text="数据加载中…" />
+</LinearLayout>
