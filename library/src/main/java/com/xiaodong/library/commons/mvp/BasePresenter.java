@@ -29,7 +29,7 @@ public abstract  class BasePresenter<E,T> {
     }
 
     public void onDestroy() {
-//        getRxManager().clear();
+        getRxManager().clear();
         if (rxManager != null) {
             rxManager = null;
         }

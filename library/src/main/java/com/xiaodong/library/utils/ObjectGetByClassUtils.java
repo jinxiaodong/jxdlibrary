@@ -3,7 +3,7 @@ package com.xiaodong.library.utils;
 import java.lang.reflect.ParameterizedType;
 /**
  * Created by xiaodong.jin on 2018/11/15.
- * 功能描述：
+ * 功能描述：通过反射获取
  */
 public class ObjectGetByClassUtils {
     /**
@@ -17,11 +17,11 @@ public class ObjectGetByClassUtils {
         try {
             return ((Class<T>) ((ParameterizedType) o.getClass().getGenericSuperclass()).getActualTypeArguments()[index]).newInstance();
         } catch (InstantiationException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         } catch (IllegalAccessException e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
         return null;
     }

@@ -18,7 +18,7 @@ import com.xiaodong.library.commons.constants.DeviceInfo;
 
 public class LoadingUtils {
 
-    public static Dialog createLoadingDialog(Context context, String msg) {
+    public static Dialog createLoadingDialog(Context context, String msg, boolean canceled) {
         View v = LayoutInflater.from(context).inflate(R.layout.lib_loaddialog, null);
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view);// 加载布局
         if (!TextUtils.isEmpty(msg)) {
@@ -29,12 +29,16 @@ public class LoadingUtils {
 
         Dialog loadingDialog = new Dialog(context, R.style.loading_dialog);// 创建自定义样式dialog
 
-        loadingDialog.setCanceledOnTouchOutside(false);// 空白区域不可以点击
+        loadingDialog.setCanceledOnTouchOutside(canceled);// 空白区域不可以点击
         loadingDialog.setContentView(layout, new LinearLayout.LayoutParams(
                 DeviceInfo.WIDTHPIXELS / 3 * 2,
                 LinearLayout.LayoutParams.WRAP_CONTENT));// 设置布局
 
-
         return loadingDialog;
+    }
+
+
+    public static Dialog createLoadingDialog(Context context, String msg) {
+        return createLoadingDialog(context, msg, false);
     }
 }

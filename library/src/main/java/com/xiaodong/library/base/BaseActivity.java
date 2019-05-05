@@ -7,11 +7,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
@@ -23,6 +20,9 @@ import com.xiaodong.library.view.swipebacklayout.SwipeBackActivityHelper;
 import com.xiaodong.library.view.swipebacklayout.SwipeBackLayout;
 import com.xiaodong.library.view.widgets.CommonHeaderView;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 /**
  * Created by xiaodong.jin on 2018/11/15.
  * description：
@@ -31,6 +31,7 @@ import com.xiaodong.library.view.widgets.CommonHeaderView;
 public abstract class BaseActivity extends AppCompatActivity implements BaseView, View.OnClickListener {
 
 
+    public static final int DEFAULT_HEADER = 0;
     public FrameLayout rootDecodeView;
 
     public View netWork;
@@ -75,18 +76,18 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         hideActionBar();
         setContentView(R.layout.lib_base_activity_layout);
         mLayoutInflater = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE));
-        rootDecodeView = (FrameLayout) findViewById(R.id.rootDecodeView);
-        LinearLayout layout = (LinearLayout) findViewById(R.id.content);
-        if (getHeaderLayoutId() == 0) {
-            mHeaderView = (ViewGroup) mLayoutInflater.inflate(R.layout.lib_base_header, null);
+        rootDecodeView = findViewById(R.id.rootDecodeView);
+        LinearLayout layout = findViewById(R.id.content);
+        if (getHeaderLayoutId() == DEFAULT_HEADER) {
+            mHeaderView = mLayoutInflater.inflate(R.layout.lib_base_header, null);
             mCommonHeaderView = mHeaderView.findViewById(R.id.common_header_view);
             layout.addView(mHeaderView, LinearLayout.LayoutParams.MATCH_PARENT);
         } else if (getHeaderLayoutId() > -1) {
-            mHeaderView = (ViewGroup) mLayoutInflater.inflate(getHeaderLayoutId(), null);
+            mHeaderView = mLayoutInflater.inflate(getHeaderLayoutId(), null);
             layout.addView(mHeaderView, LinearLayout.LayoutParams.MATCH_PARENT);
         }
         if (getContentLayoutId() > -1) {
-            mContentView = (ViewGroup) mLayoutInflater.inflate(getContentLayoutId(), null);
+            mContentView = mLayoutInflater.inflate(getContentLayoutId(), null);
             layout.addView(mHeaderView, LinearLayout.LayoutParams.MATCH_PARENT);
         }
         if (isUseNetWorkListener()) {
@@ -302,14 +303,15 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public String getResString(int res) {
         return getResources().getString(res) + "";
     }
+
     @Override
     public void onNetError(String tag, String errorMsg) {
-
+        hideLoading();
     }
 
     @Override
     public void onNetStart(String tag, String startMsg) {
-
+        showLoading();
     }
 
     @Override

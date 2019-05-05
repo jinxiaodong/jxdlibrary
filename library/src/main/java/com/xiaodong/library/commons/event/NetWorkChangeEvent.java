@@ -2,7 +2,7 @@ package com.xiaodong.library.commons.event;
 
 /**
  * Created by xiaodong.jin on 2018/11/15.
- * 功能描述：
+ * 功能描述：网络状态event
  */
 public class NetWorkChangeEvent {
     //网络断开标志

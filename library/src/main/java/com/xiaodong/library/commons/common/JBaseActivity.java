@@ -63,6 +63,9 @@ public abstract class JBaseActivity<T extends BaseModel, E extends BasePresenter
     }
 
     public void netWorkChange(boolean isConnect) {
+        if (isUseNetWorkListener() && netWork != null) {
+            netWork.setVisibility(isConnect ? View.GONE : View.VISIBLE);
+        }
 //        LogUtilsLib.d("netWorkChange", this.getClass().getSimpleName()+"连接状态" + isConnect);
     }
 

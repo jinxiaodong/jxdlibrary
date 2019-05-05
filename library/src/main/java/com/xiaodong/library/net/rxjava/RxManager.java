@@ -6,4 +6,9 @@ package com.xiaodong.library.net.rxjava;
  */
 
 public class RxManager {
+
+
+    public void clear() {
+
+    }
 }

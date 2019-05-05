@@ -1,0 +1,44 @@
+ext {
+    supportLibrary = "27.0.2"
+    androidx = "1.0.0"
+    supportDependencies = [
+            supportv4   : "androidx.legacy:legacy-support-v4:${androidx}",
+            cardview    : "androidx.cardview:cardview:${androidx}",
+            appCompat   : "androidx.appcompat:appcompat:${androidx}",
+            recyclerview: "androidx.recyclerview:recyclerview:${androidx}",
+            annotations : "androidx.annotation:annotation:${androidx}",
+            design      : "com.google.android.material:material:${androidx}",            //1.0.0-rc01
+            constraint  : "androidx.constraintlayout:constraintlayout:1.1.2",
+            /*分包*/
+            multidex    : "androidx.multidex:multidex:2.0.0",
+    ]
+
+    /**
+     * ===============添加第三方依赖时，一定要把混淆添加到相关的配置文件中================
+     */
+    thirdDependencies = [
+
+            rxjava       : "io.reactivex.rxjava2:rxjava:2.1.10",
+            rxandroid    : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            okhttp       : "com.squareup.okhttp3:okhttp:3.10.0",
+            retrofit     : "com.squareup.retrofit2:retrofit:2.4.0",
+            gson         : "com.google.code.gson:gson:2.8.1",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:2.4.0",
+            rxjavaAdapter: "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+            eventbus     : "org.greenrobot:eventbus:3.1.1",
+
+    ]
+
+
+    app = [
+            compileSdkVersion  : 28,
+            buildToolsVersion  : "28.0.2",
+            minSdkVersion      : 19,
+            targetSdkVersion   : 28,
+            versionCode        : 100,
+            versionName        : "1.0.0",
+            applicationId      : "com.xiaodong.kotlindemos",
+            targetCompatibility: 1.8,
+            sourceCompatibility: 1.8,
+    ]
+}
