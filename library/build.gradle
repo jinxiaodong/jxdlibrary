@@ -47,5 +47,6 @@ dependencies {
     api thirdDependencies.gsonConverter
     api thirdDependencies.rxjavaAdapter
     api thirdDependencies.eventbus
+    api thirdDependencies.logger
 
 }
