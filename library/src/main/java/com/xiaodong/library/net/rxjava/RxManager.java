@@ -29,7 +29,7 @@ public class RxManager {
 
                     @Override
                     public void _onNext(T t) {
-
+                        // TODO: 2019/05/06 身份过期验证
                         rxObservableListener.onNext(t);
                     }
 

@@ -7,6 +7,7 @@ import android.support.multidex.MultiDexApplication;
 import android.util.DisplayMetrics;
 
 import com.xiaodong.library.commons.constants.DeviceInfo;
+import com.xiaodong.library.utils.LogUtils;
 
 /**
  * Created by xiaodong.jin on 2018/11/15.
@@ -36,16 +37,17 @@ public class BaseApplication extends MultiDexApplication {
         if (resources != null){
             DisplayMetrics displayMetrics = resources.getDisplayMetrics();
             if (resources.getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                LogUtil.makeLog(TAG, "============appInit, orientation:" + "横屏状态");
+                LogUtils.i("Application", "============appInit, orientation:" + "横屏状态");
                 DeviceInfo.WIDTHPIXELS = displayMetrics.heightPixels;
                 DeviceInfo.HEIGHTPIXELS = displayMetrics.widthPixels;
             } else {
-//                LogUtil.makeLog(TAG, "============appInit, orientation:" + "竖屏状态");
+                LogUtils.i("Application", "============appInit, orientation:" + "竖屏状态");
                 DeviceInfo.WIDTHPIXELS = displayMetrics.widthPixels;
                 DeviceInfo.HEIGHTPIXELS = displayMetrics.heightPixels;
             }
             DeviceInfo.DENSITYDPI = displayMetrics.densityDpi;
             DeviceInfo.DENSITY = displayMetrics.density;
         }
+
     }
 }

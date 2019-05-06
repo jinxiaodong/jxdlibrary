@@ -21,7 +21,8 @@ import okhttp3.Response;
 import okio.Buffer;
 
 /**
- * Http 请求公共参数
+ * Created by xiaodong.jin on 2019/05/06.
+ * 功能描述： Http 请求公共参数,如果需要其他参数，可自行定义新的Interceptor
  */
 public class CommonRequestInterceptor implements Interceptor {
     @Override
