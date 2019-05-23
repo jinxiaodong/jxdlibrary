@@ -1,8 +1,6 @@
 package com.xiaodong.library.view.widgets;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -14,6 +12,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xiaodong.library.R;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * Created by xiaodong.jin on 2018/11/15.

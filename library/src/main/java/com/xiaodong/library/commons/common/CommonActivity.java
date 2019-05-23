@@ -18,7 +18,7 @@ import org.greenrobot.eventbus.ThreadMode;
  * description：
  */
 
-public abstract class JBaseActivity<T extends BaseModel, E extends BasePresenter> extends BaseActivity {
+public abstract class CommonActivity<T extends BaseModel, E extends BasePresenter> extends BaseActivity {
     public T mModel;
     public E mPresenter;
     protected boolean bActive = false;

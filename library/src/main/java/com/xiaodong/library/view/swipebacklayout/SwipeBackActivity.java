@@ -4,8 +4,9 @@ package com.xiaodong.library.view.swipebacklayout;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase, SwipeBackLayout.SwipeListener  {

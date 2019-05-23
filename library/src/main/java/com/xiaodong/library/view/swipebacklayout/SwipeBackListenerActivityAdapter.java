@@ -1,9 +1,10 @@
 package com.xiaodong.library.view.swipebacklayout;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 
 import java.lang.ref.WeakReference;
+
+import androidx.annotation.NonNull;
 
 
 /**
